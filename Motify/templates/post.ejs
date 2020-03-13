@@ -6,6 +6,12 @@
     <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
     <script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
     <% }; %>
+    <% if (post.prevPost) { %>
+    <link rel="prefetch" href="<%= post.prevPost.link %>">
+    <% } %>
+    <% if (post.nextPost) { %>
+    <link rel="prefetch" href="<%= post.nextPost.link %>">
+    <% } %>
   </head>
   <body>
     <!-- start: #wrapper -->

@@ -3,8 +3,15 @@
   <head>
     <%- include('./includes/head', { siteTitle: themeConfig.siteName }) %>
     <meta name="description" content="<%- themeConfig.siteDescription %>" />
+    <% if (pagination.prev) { %>
+    <link rel="prefetch" href="<%= pagination.prev %>">
+    <% } %>
+    <% if (pagination.next) { %>
+    <link rel="prefetch" href="<%= pagination.next %>">
+    <% } %>
   </head>
   <body>
+                
     <!-- start: #wrapper -->
     <header id="header" style="<% if (site.customConfig.headerBgImage) { %>background-image:url(<% if ( site.customConfig.jsdelivr == true) { %>https://cdn.jsdelivr.net/gh/<%= site.customConfig.username %>/<%= site.customConfig.repository %><%= site.customConfig.headerBgImage %><% } else{ %><%= themeConfig.domain %><%= site.customConfig.headerBgImage %><% } %>)<% } %>">
         <%- include('./includes/header') %>
