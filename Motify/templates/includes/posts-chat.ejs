@@ -1,0 +1,25 @@
+<article class="post hentry format-chat">
+    <header>
+        <time class="date">
+            <i class="fa">
+                <span class="datetime"><%= post.dateFormat %></span>
+            </i>
+        </time>
+    </header>
+    <div class="post-content">
+        <a href="<%= post.link %>">
+            <% if ( site.customConfig.jsdelivr == true) { %>
+                <img src="https://cdn.jsdelivr.net/gh/<%= site.customConfig.username %>/<%= site.customConfig.repository %>/images/avatar.png" class="avatar">
+            <% } else{ %>
+                <img src="<%= themeConfig.domain %>/images/avatar.png" class="avatar">
+            <% } %>
+        </a>
+        <div class="post-hentry">
+        <% if (post.abstract) { %>
+            <%- post.abstract %>
+        <% }else{ %>
+            <%- post.description %>
+        <% } %>
+        </div>
+    </div>
+</article>

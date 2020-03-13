@@ -1,0 +1,23 @@
+            <article class="post hentry format-daily format-<% if (post.tags[0]) { %><%= post.tags[0].slug %><% }; %>">
+                <header>
+                    <time class="date">
+                        <i class="fa">
+                            <span class="datetime"><%= post.dateFormat %></span>
+                        </i>
+                    </time>
+                </header>
+                <h1 class="entry-title">
+                    <a href="<%= post.link %>"><%= post.title %></a>
+                </h1>
+                <div class="post-content">
+                    <div class="post-hentry">
+                    <% if (post.abstract) { %>
+                        <%- post.abstract %>
+                        <footer class="post-footer"><a href="<%= post.link %>" class="more-link">阅读全文</a></footer>
+                    <% }else{ %>
+                        <%- post.description %>
+                        <footer class="post-footer"><a href="<%= post.link %>#comments" class="more-link">发表评论</a></footer>
+                    <% } %>
+                    </div>
+                </div>
+            </article>

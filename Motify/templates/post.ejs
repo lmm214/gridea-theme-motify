@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+  <head>
+    <%- include('./includes/head', { siteTitle: `${post.title} | ${themeConfig.siteName}` }) %>
+    <meta name="description" content="<%- post.description %>" />
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+  </head>
+  <body>
+    <!-- start: #wrapper -->
+    <header id="header" style="<% if (post.feature) { %>background-image:url(<%= post.feature %>)<% } else if (site.customConfig.headerBgImage) { %>background-image:url(<%= site.customConfig.headerBgImage %>)<% } %>">
+        <%- include('./includes/header') %>
+    </header>
+    <div class="wrapper single">
+        <div class="content">
+            <div id="posts" class="posts">
+            <!-- start: .articles -->
+            <% if (post.tags[0] && post.tags[0].slug == 'chat') { %>
+            <article class="post hentry format-chat">
+                <header>
+                    <time class="date">
+                        <i class="fa">
+                            <span class="datetime"><%= post.dateFormat %></span>
+                        </i>
+                    </time>
+                </header>
+                <div class="post-content">
+                    <a href="<%= post.link %>">
+                        <img src="<%= themeConfig.domain %>/images/avatar.png" class="avatar">
+                    </a>
+                    <div class="post-hentry">
+                        <%- post.content %>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </article>
+            <% } else{ %>
+            <article class="post hentry format-daily format-<% if (post.tags[0]) { %><%= post.tags[0].slug %><% }; %>">
+                <header>
+                    <time class="date">
+                        <i class="fa">
+                            <span class="datetime"><%= post.dateFormat %></span>
+                        </i>
+                    </time>
+                </header>
+                <h1 class="entry-title">
+                    <%= post.title %>
+                </h1>
+                <div class="post-content">
+                    <div class="post-hentry">
+                        <%- post.content %>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </article>
+            <% }; %>
+
+                <div class="pager">
+                    <% if (post.prevPost) { %>
+                        <a class="prev" href="<%= post.prevPost.link %>"><%= post.prevPost.title %></a>
+                    <% } else { %>
+                        <span class="prev">已是最新一篇</span>
+                    <% } %>
+                    <% if (post.nextPost) { %>
+                         <a class="next" href="<%= post.nextPost.link %>"><%= post.nextPost.title %></a>
+                    <% } else { %>
+                        <span class="next">已是最早一篇</span>
+                    <% } %>
+                    <div class="clear"></div>
+                </div>
+
+            <% if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+              <div id="comments">
+                <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                  <%- include('./includes/gitalk') %>
+                <% } %>
+                <% if (commentSetting.commentPlatform === 'disqus') { %>
+                  <%- include('./includes/disqus') %>
+                <% } %>
+              </div>
+            <% } else if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+              <div id="comments"></div>
+              <div class="clear"></div>
+            <% } else { %>
+              <div id="comments">
+                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+              </div>
+              <div class="clear"></div>
+            <% } %>
+            
+            </div>
+
+        </div>
+
+        <%- include('./includes/footer') %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <%- include('./includes/head', { siteTitle: `我的阅读 | ${themeConfig.siteName}` }) %>
+    <meta name="referrer" content="never">
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/js/Bmdb.min.css">
+  </head>
+  <body>
+    <!-- start: #wrapper -->
+    <header id="header" style="<% if (site.customConfig.headerBgImage) { %>background-image:url(<%= site.customConfig.headerBgImage %>)<% } %>">
+        <%- include('./includes/header') %>
+    </header>
+    <div class="wrapper">
+        <div class="content">
+            <div id="posts" class="posts">
+            <!-- start: .articles -->
+            <article class="post hentry format-daily" style="margin-top:3em;">
+                <h1 class="entry-title">
+                   我的阅读
+                </h1>
+                <div class="post-content" style="margin:0 auto;width:80%;padding:1em 0"></div>
+            </article>
+            
+            </div>
+
+        </div>
+
+    <footer id="footer" class="">
+        <p class="published border-effect">
+          ©2020 共 <%= site.posts.length %> 篇文章
+          <br/>
+          Theme <a href="https://immmmm.com/gridea-theme-motify/" target="_blank">「<%= themeConfig.themeName %>」</a> Powered by <a href="https://gridea.dev/" target="_blank">「Gridea」</a>
+        </p>
+    </footer>
+  
+    <% if ( site.customConfig.jsdelivr == true) { %>
+      <script src="https://cdn.jsdelivr.net/gh/<%= site.customConfig.username %>/<%= site.customConfig.repository %>/media/js/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/<%= site.customConfig.username %>/<%= site.customConfig.repository %>/media/js/Bmdb.min.js"></script>
+    <% } else{ %>
+      <script src="<%= themeConfig.domain %>/media/js/jquery.min.js"></script>
+      <script type='text/javascript' src='<%= themeConfig.domain %>/media/js/Bmdb.min.js'></script>
+    <% }; %>
+
+    <script>
+    new Bmdb({
+      type: 'books',
+      selector: '.post-content',
+      secret: '<%= site.customConfig.bmdbSecret %>',
+      noMoreText: '没有更多数据了',
+      limit: 30
+    })
+    </script>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<div class="header-container">
+  <h1 class="site-title"><a href="<%= themeConfig.domain %>"><%= themeConfig.siteName %></a></h1>
+  <h2 class="site-description"><%= themeConfig.siteDescription %></h2>
+  <nav class="main-navigation">
+    <ul id="" class="">
+      <% menus.forEach(function(menu) { %>
+      <li class="" ><a href="<%= menu.link %>" class="menu"><%= menu.name %></a></li>
+      <% }); %>
+    </ul>
+  </nav>
+  <div class="my_socials">
+    <% ['twitter','instagram','weibo' ,'facebook','github' ,'flickr','feed'].forEach((item) => { %>
+      <% if (site.customConfig[item]) { %>
+      <a href="<%= site.customConfig[item] %>" class="translate-effect" target="_blank"><i class="fa fa-<%= item %>"></i></a>
+      <% } %>
+    <% }) %>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <%- include('./includes/head', { siteTitle: `${tag.name} | ${themeConfig.siteName}` }) %>
+  </head>
+  <body>
+    <!-- start: #wrapper -->
+    <header id="header" style="<% if (site.customConfig.headerBgImage) { %>background-image:url(<%= site.customConfig.headerBgImage %>)<% } %>">
+        <%- include('./includes/header') %>
+    </header>
+
+    <div class="wrapper">
+    <div class="content posts post archive hentry">
+        <h1>全站标签</h1>
+        <ul class="archive-list ">
+            <% site.tags.forEach(function(tag) { %>
+            <li class="archive-item tags-item">
+                <img class="archive-list-image" src="<%= themeConfig.domain %>/media/images/<%= tag.slug %>.png"></img>
+                <a href="<%= tag.link %>"><%= tag.name %></a>
+                <span class="archive-item-meta"><%= tag.slug %></span>
+            </li>
+            <% }); %>
+        </ul>
+        <div class="clear"></div>
+
+        <h1># <%= tag.name %></h1>
+        <ul class="archive-list">
+            <% posts.forEach(function(post) { %>
+            	<li class="archive-item">
+                    <img class="archive-list-image" src="<% if (post.feature) { %><%= post.feature %><% } else if (post.tags[0]) { %><%= themeConfig.domain %>/media/images/<%= post.tags[0].slug %>.png<% } else { %><%= site.customConfig.headerBgImage %><%} %>"></img>
+                    <a href="<%= post.link %>"><%= post.title %></a>
+                    <time class="date" style="text-align:left;"><span class="archive-item-meta datetime"><%= post.dateFormat %></span></time>
+                </li>
+            <% }); %>
+        </ul>
+        <div class="clear"></div>
+    </div>
+            
+    <%- include('./includes/pagination') %>
+    <%- include('./includes/footer') %>
+
+    </div>
+    <!-- end: #wrapper -->
+  </body>
+</html>

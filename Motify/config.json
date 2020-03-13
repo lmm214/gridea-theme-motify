@@ -1,0 +1,38 @@
+{
+  "name": "Motify",
+  "version": "20.03.13",
+  "author": "linmumu",
+  "repository": "https://immmmm.com/gridea-theme-motify/",
+  "customConfig": [
+    {"name": "github","label": "Github","group": "社交","value": "","type": "input","note": "链接地址"},
+    {"name": "twitter","label": "Twitter","group": "社交","value": "","type": "input","note": "链接地址"},
+    {"name": "instagram","label": "instagram","group": "社交","value": "","type": "input","note": "链接地址"},
+    {"name": "weibo","label": "weibo","group": "社交","value": "","type": "input","note": "链接地址"},
+    {"name": "facebook","label": "facebook","group": "社交","value": "","type": "input","note": "链接地址"},
+    {"name": "flickr","label": "flickr","group": "社交","value": "","type": "input","note": "链接地址"},
+    {"name": "feed","label": "feed","group": "社交","value": "","type": "input","note": "feed链接地址"},
+    {"name": "friends","label": "友链","group": "友链","type": "array","value": [],
+      "arrayItems": [
+        { "label": "名称", "name": "siteName", "type": "input", "value": "" },
+        { "label": "链接", "name": "siteLink", "type": "input", "value": "" },
+        { "label": "Logo（邮箱md5）", "name": "siteLogo", "type": "input", "value": "" },
+        { "label": "描述", "name": "description", "type": "textarea", "value": "" }
+      ],
+      "note": "Logo 使用邮箱md5，在线 https://tool.chinaz.com/tools/md5.aspx "
+    },
+    {"name": "customCss","label": "自定义CSS","group": "自定义样式","value": "","type": "textarea","note": ""},
+    {"name": "headerBgColor","label": "头部背景色","group": "自定义样式","value": "#515865","type": "input","card": "color","note": "默认 #515865"},
+    {"name": "headerBgImage","label": "头部背景图","group": "自定义样式","value": "","type": "picture-upload","note": ""},
+    {"name": "bmdbSecret","label": "secret","group": "豆瓣书影单","value": "","type": "input","note": "secret 可以在前往 https://bm.weajs.com/ 注册获取"},
+    {"name": "valineID","label": "appId","group": "Valine 评论配置","value": "","type": "input","note": "请输入appId"},
+    {"name": "valineKey","label": "appKey","group": "Valine 评论配置","value": "","type": "input","note": "请输入appKey"},
+    {"name": "jsdelivr","label": "jsDelivr 加速","group": "jsDelivr 加速配置","value": "false","type": "select",
+      "options": [
+        {"label": "开启","value": true},
+        {"label": "关闭","value": false}
+      ]
+    },
+    {"name": "username","label": "Github 用户名","group": "jsDelivr 加速配置","value": "","type": "input","note": "请输入 Github 用户名"},
+    {"name": "repository","label": "Github 仓库名","group": "jsDelivr 加速配置","value": "","type": "input","note": "请输入 Github 仓库名"}
+  ]
+}
