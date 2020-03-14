@@ -33,7 +33,11 @@
                 </header>
                 <div class="post-content">
                     <a href="<%= post.link %>">
-                        <img src="<%= themeConfig.domain %>/images/avatar.png" class="avatar">
+                        <% if ( site.customConfig.jsdelivr == true) { %>
+                            <img src="https://cdn.jsdelivr.net/gh/<%= site.customConfig.username %>/<%= site.customConfig.repository %>/images/avatar.png" class="avatar">
+                        <% } else{ %>
+                            <img src="<%= themeConfig.domain %>/images/avatar.png" class="avatar">
+                        <% } %>
                     </a>
                     <div class="post-hentry">
                         <%- post.content %>
