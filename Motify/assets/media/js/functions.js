@@ -83,7 +83,6 @@ jQuery(document).ready(function($) {
             'qzone': iconFontTag + '-qzone',
             'weibo': iconFontTag + '-weibo',
             'facebook': iconFontTag + '-facebook',
-            'github': iconFontTag + '-github',
             'douban': iconFontTag + '-douban',
             'google': iconFontTag + '-google',
             'luolei': iconFontTag + '-luolei',
